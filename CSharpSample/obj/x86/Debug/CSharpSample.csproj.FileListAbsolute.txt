@@ -1,0 +1,13 @@
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\libclamav.dll
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\libclamunrar.dll
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\libclamunrar_iface.dll
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\CSharpSample.exe
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\CSharpSample.pdb
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\SharpClam.dll
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\bin\Debug\SharpClam.pdb
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\obj\x86\Debug\CSharpSample.csprojResolveAssemblyReference.cache
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\obj\x86\Debug\CSharpSample.MainForm.resources
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\obj\x86\Debug\CSharpSample.Properties.Resources.resources
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\obj\x86\Debug\CSharpSample.csproj.GenerateResource.Cache
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\obj\x86\Debug\CSharpSample.exe
+C:\Users\MUZCOM_PC\Documents\GitHub\SharpClam\CSharpSample\obj\x86\Debug\CSharpSample.pdb

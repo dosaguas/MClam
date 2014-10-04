@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SharpClam")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("DotNet binding for libclamav.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("FAHMI-SYSTE   ")]
+[assembly: AssemblyCompany("Cysoft Software")]
 [assembly: AssemblyProduct("SharpClam")]
-[assembly: AssemblyCopyright("Copyright © FAHMI-SYSTEM    2014")]
+[assembly: AssemblyCopyright("Copyright © Cysoft Software 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
