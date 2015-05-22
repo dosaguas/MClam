@@ -1,78 +1,104 @@
-SharpClam
-=========
 
-A tiny libclamav bindings for VB.NET and C#.
 
-This class library do P/Invoke to libclamav binary file (libclamav.dll). This library tested and working poroperly with ClamAV 0.98.1 binary files (libclamav.dll, libclamunrar.dll, and libclamunrar_iface.dll).
+# ReSharpedClam
 
-Above that version is not tested. Because I tested it with ClamAV 0.98.4 (lastest with OpenSSL) it does not working, just saying "Can't allocate memory".
+> Copyright (C) 2015.
+> Created by Fahmi Noor Fiqri
 
-Hope this library will help.
+After some time not watching on this library, I make a big jump in this library. I had had recoded this library to give even better code.
 
-How To Use
-----------
+ClamAV 0.98.7 is now supported! Both 32-bit and 64-bit are supported. New demo app also included, both can runs on Windows x64 and x86 bit version.
 
-Simply, just add reference to SharpClam, and use these lines of code :
+And the biggest jump is NOW THE ENTIRE CODE IS FULLY WRITTEN IN VB.NET.
 
-**VB.NET** 
+## 1) LICENSE
+   THIS WORK IS LICENSED UNDER CreativeCommons Attribution ShareAlike 4.0 Unported License. THIS PROGRAM IS PRODUCED WITHOUT ANY WARRANTY AND NOT GUARANTEE. YOU MAY USE IT FOR COMMERCIAL, WITHOUT ANY CHARGES. PLEASE GIVE CREDITS IN YOUR APPLICATION ABOUT THIS LIBRARY.
+
+## 2) CHANGELOG
+   1. September 04, 2014
+      - Initial release.
+ 
+   2. September 05, 2014
+      - Some little bug fixes.
+      - Added sample code! Both in VB.NET or C#. Yay!
+      - ClamAV library now will automatically linked to 'Debug' path.
+
+   3. May 22, 2015
+      * ALL CODE RECODED!
+      * Change name from 'SharpClam' to 'ReSharpedClam'.
+      * Change .NET Framework from v4.0 to v2.0 for maximum compatibility.
+      * Supports with ClamAV 0.98.7 (x86 and x64).
+      * New 'Freshclam' class to check updates.
+      * Added full code documentation.
+
+## 3) HOW TO USE
+   This simple Console Application will describe how to use ReSharpedClam.
 
 ```
-Imports SharpClam
+Imports ReSharpedClam
 
-Public Sub ScanFile()
-Dim clamEngine As New ManagedClam
+   Module Module1
+       Sub Main()
+           'First, initialize ClamAV.
+           ClamMain.InitializeClamAV()
 
-'Before any call, we must specify the ClamAV database directory.
-'The directory must have "main.cvd" and "daily.cvd" inside.
-clamEngine.DatabasePath = "D:\database" 
- 
-'First we have to initialize the engine
-Dim loadedSigs As UInteger = 0
-clamEngine.LoadClamAV(DatabaseOptions.CL_DB_STDOPT, ManagedClam.CL_INIT_STDOPT, loadedSigs)
+           Console.WriteLine("ClamAV initialized.")
 
-'Now we're ready to start scan files.
-Dim result As ScanResult = clamEngine.ScanFile("D:\file.exe", ScanOptions.CL_SCAN_STDOPT)
-MsgBox(result.VirusName) 'Display a message box
+           'Always use 'Using' statement to handle memory leaking
+           Using cl_engine As New ClamEngine()
+               'Load database
+                Dim loadedSignatureCount As UInteger = 0
+               'Change this path according your ClamAV Database directory path
+               cl_engine.LoadDatabase("C:\clamav\database", loadedSignatureCount)
 
-'After all calls, and we does not need to use the engine anymore, we must release memory allocated for the engine.
-clamEngine.FreeMemory()
-End Sub
+               Console.WriteLine()
+               Console.WriteLine("Database loading completed.")
+               Console.WriteLine("Loaded signatures : " & loadedSignatureCount)
+
+               'Compile engine
+               cl_engine.CompileEngine()
+
+               Console.WriteLine()
+               Console.WriteLine("Engine compiled successfully.")
+
+               'Scan a file
+               'Change to your file path to scan
+               Dim scan_result As ClamScanResult = cl_engine.ScanByFile("C:\example.exe")
+               'Print all scan informations
+               Console.WriteLine()
+               Console.WriteLine("Scan completed.")
+               Console.WriteLine("===============")
+
+               Console.WriteLine("File name : " & IO.Path.GetFileName(scan_result.FullPath))
+               Console.WriteLine("Full path : " & scan_result.FullPath)
+               Console.WriteLine("File size : " & scan_result.FileSize)
+               Console.WriteLine()
+               Console.WriteLine("Is infected : " & scan_result.IsInfected)
+               Console.WriteLine("Virus name : " & scan_result.VirusName)
+               Console.WriteLine("Scanned data : " & scan_result.ScannedData.ToKbytes & " Kbytes")
+               Console.WriteLine("Time elapsed : " & scan_result.TimeElapsed.ToString)
+           End Using
+           'Pause exit
+           Console.Read()
+       End Sub
+   End Module
 ```
+   
+### RUN CONDITION
+   1. Libclamav files are placed in same directory with application executable path.
+   2. Place right ClamAV version in application directory.
+   3. Be aware placing x64 and x86 bits version of ClamAV and project Configuration.
 
-I think it's just same source code in C#. The logic is :
+## 4) ISSUE
+THE MOST ANNOYING ISSUE : Unicode path name is not supported.
 
-1. Load ClamAV engine (Initialize it, load the database and then compile it).
-2. Start scan a file.
-3. Release allocated memory.
+But, I have find out how to resolve this. Just open file descriptor using `_wopen`, but it is a C++ code. Now I'm learning C++ to create library to handle this.
 
-TODO List and Enchancement
---------------------------
-Because of this commit is still in Alpha version, some enchacement is required.
+Might you guys can help me find out how to create this library.
+   
+## 5) SUPPORT
+You can contact me from my [Facebook](https://www.facebook.com/fahmi.noorifqri) or post in GitHub. I can't always reply your question because of my school activity.
 
-1. Analyze and track memory leaking.
-2. Optimize P/Invoke to libclamav binary.
-3. Release new feature to complete all ClamAV API, because some function in this commit is still not Implemented.
-4. Any other bug fixes.
-5. Test with newer version of ClamAV. Current support : version 0.98.1.
+Don't forget to see my blog at [Blog Fahmi](http://blog-fahmi.16mb.com).
 
-License
--------
-This library is licensed under [LGPL v3.0](http://www.gnu.org/licenses/lgpl.html "LGPL v3.0 License").
-
-Changelog
----------
-
-04 September 2014 :
-- Initial release.
- 
-05 September 2014 :
-- Some little bug fixes.
-- Added sample code! Both in VB.NET or C#. Yay!
-- ClamAV library now will automatically linked to 'Debug' path.
-
-About Me
---------
-
-My name is Fahmi Noor Fiqri, from Bogor, West Java,  Indonesia. See my homepage in : [Cyber Tech For Us](http://www.cyber-tech4us.tk "Cyber Tech For Us").
-
-Sorry for my bad english. I'm don't using any translator software.
+Hope this library is useful for you...

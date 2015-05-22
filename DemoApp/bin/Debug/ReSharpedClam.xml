@@ -1,0 +1,705 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ReSharpedClam
+</name>
+</assembly>
+<members>
+<member name="M:ReSharpedClam.IClamEngine.ScanByFile(System.String)">
+	<summary>
+ Scans a file.
+ </summary>
+	<param name="filePath">Full path to file.</param>
+	<returns><see cref="T:ReSharpedClam.IScanResult"/> object contains scan result informations.</returns>
+	<remarks>The engine must be loaded and compiled before using this method.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.ScanByFile(System.String,ReSharpedClam.ClamScanOptions)">
+	<summary>
+ Scans a file with specified scan options.
+ </summary>
+	<param name="filePath">Full path to file.</param>
+	<param name="scanOptions">Scan option.</param>
+	<returns>See this section in <see cref="M:ReSharpedClam.IClamEngine.ScanByFile(System.String)"/> overloads.</returns>
+	<remarks>See this section in <see cref="M:ReSharpedClam.IClamEngine.ScanByFile(System.String)"/> overloads.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.ScanByDescriptor(System.Int32)">
+	<summary>
+ Scans file using it's file descriptor.
+ </summary>
+	<param name="fileDescriptor">The file descriptor from open or ws_open.</param>
+	<returns><see cref="T:ReSharpedClam.IScanResult"/> object contains scan result informations.</returns>
+	<remarks>
+		<para>THIS METHOD ONLY WORKING WHEN USED WITH C/C++ CODE. 
+ You must create a C/C++ library to open file descriptor using C/C++ 
+ code because File Descriptor is officialy supported by C/C++ Runtime, 
+ not by CLR.</para>
+		<para>I'm currently working to create Unamanaged Library using C++ 
+ to open file and get it's file descriptor.</para>
+		<para>Remember, you can't use ANY .NET Framework internal method to open file descriptor, 
+ YOU MUST CREATE YOUR OWN LIBRARY USING C/C++ TO OPEN FILE DESCRIPTOR. 
+ .NET Framework FileSystem method like <c>FileOpen</c> will not work.</para>
+	</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.ScanByDescriptor(System.Int32,ReSharpedClam.ClamScanOptions)">
+	<summary>
+ Scans file using it's file descriptor with specified scan options.
+ </summary>
+	<param name="fileDescriptor">The file descriptor from open or ws_open.</param>
+	<param name="scanOptions">Scan option.</param>
+	<returns>See this section in <see cref="M:ReSharpedClam.IClamEngine.ScanByDescriptor(System.Int32)"/> overloads.</returns>
+	<remarks>See this section in <see cref="M:ReSharpedClam.IClamEngine.ScanByDescriptor(System.Int32)"/> overloads.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.LoadDatabase(System.String)">
+	<summary>
+ Load database file(s) (CVD) to this engine.
+ </summary>
+	<param name="dbPath">Full path to CVD file or directory.</param>
+	<returns>Number of loaded sigantures.</returns>
+	<remarks>You can't load database after the engine had compiled.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.LoadDatabase(System.String,ReSharpedClam.ClamDatabaseOptions)">
+	<summary>
+ Load database file(s) (CVDs) to this engine.
+ </summary>
+	<param name="dbPath">Full path to CVD file or directory.</param>
+	<param name="dbOptions">Database loading options.</param>
+	<returns>See this section in <see cref="M:ReSharpedClam.IClamEngine.LoadDatabase(System.String)"/> overloads.</returns>
+	<remarks>See this section in <see cref="M:ReSharpedClam.IClamEngine.LoadDatabase(System.String)"/> overloads.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.SetEngineField(ReSharpedClam.ClamEngineField,System.Object)">
+	<summary>
+ Sets an engine field value.
+ </summary>
+	<param name="field">Engine field.</param>
+	<param name="value">New value to apply.</param>
+	<remarks>Call this before compiling the engine. BE CAREFUL WHEN CALLING THIS METHOD. PLEASE REFER TO CLAMAV DOCUMENTATION FOR MORE INFORMATION.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.GetEngineField(ReSharpedClam.ClamEngineField)">
+	<summary>
+ Gets an engine field value.
+ </summary>
+	<param name="field">Engine field.</param>
+	<returns>Setting field value.</returns>
+	<remarks>Call this before compiling the engine. BE CAREFUL WHEN CALLING THIS METHOD. PLEASE REFER TO CLAMAV DOCUMENTATION FOR MORE INFORMATION.</remarks>
+</member><member name="M:ReSharpedClam.IClamEngine.CompileEngine">
+	<summary>
+ Compile engine for scanning purpose.
+ </summary>
+	<remarks>After the engine is compiled, you can't change anything else (e.g. change settings, load database).</remarks>
+</member><member name="P:ReSharpedClam.IClamEngine.IsDatabaseLoaded">
+	<summary>
+ Check if database is loaded to engine.
+ </summary>
+	<returns><c>Boolean</c> value indicating if database is loaded.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.IClamEngine.IsEngineCompiled">
+	<summary>
+ Check if engine is compiled.
+ </summary>
+	<returns><c>Boolean</c> value indicating if engine is compiled.</returns>
+	<remarks></remarks>
+</member><member name="T:ReSharpedClam.IClamEngine">
+	<summary>
+ Deafult ClamAV Engine base.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_RAW">
+	<summary>
+ Use it alone if you want to disable support for special files.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_ARCHIVE">
+	<summary>
+ This flag enables transparent scanning of various archive formats.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_MAIL">
+	<summary>
+ Enable support for mail files.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_OLE2">
+	<summary>
+ Enables support for OLE2 containers (used by MS Office and .msi files).
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_BLOCKENCRYPTED">
+	<summary>
+ With this flag the library will mark encrypted archives as viruses (Encrypted.Zip, Encrypted.RAR).
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_HTML">
+	<summary>
+ This flag enables HTML normalisation (including ScrEnc decryption).
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_PE">
+	<summary>
+ This flag enables deep scanning of Portable Executable files and allows libclamav to unpack executables compressed with run-time unpackers.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_BLOCKBROKEN">
+	<summary>
+ libclamav will try to detect broken executables andmark themas Broken.Executable.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_MAILURL">
+	<summary>
+ Undocumented flag in ClamAV Documentation.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_BLOCKMAX">
+	<summary>
+ Undocumented flag in ClamAV Documentation.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_ALGORITHMIC">
+	<summary>
+ Enable algorithmic detection of viruses.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_PHISHING_BLOCKSSL">
+	<summary>
+ Phishing module: always block SSL mismatches in URLs.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_PHISHING_BLOCKCLOAK">
+	<summary>
+ Phishing module: always block cloaked URLs.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_ELF">
+	<summary>
+ Enable support for ELF files.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_PDF">
+	<summary>
+ Enables scanning within PDF files.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_STRUCTURED">
+	<summary>
+ Enable the DLP module which scans for credit card and SSN numbers.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_STRUCTURED_SSN_NORMAL">
+	<summary>
+ Search for SSNs formatted as xx-yy-zzzz.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_STRUCTURED_SSN_STRIPPED">
+	<summary>
+ Search for SSNs formatted as xxyyzzzz.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_PARTIAL_MESSAGE">
+	<summary>
+ Scan RFC1341 messages split over many emails. You will need to periodically
+ clean up $TemporaryDirectory/clamav-partial directory (or use CleanClamavTempoary).
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_HEURISTIC_PRECEDENCE">
+	<summary>
+ Allow heuristic match to take precedence. When enabled, if a heuristic scan (such
+ as phishingScan) detects a possible virus/phish it will stop scan immediately. Rec-ommended, saves CPU scan-time. When disabled, virus/phish detected by heuris-tic scans will be reported only at the end of a scan. If an archive contains both a
+ heuristically detected virus/phishing, and a real malware, the real malware will be
+ reported.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_BLOCKMACROS">
+	<summary>
+ OLE2 containers, which contain VBA macros will be marked infected (Heuris-tics.OLE2.ContainsMacros).
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_ALLMATCHES">
+	<summary>
+ Undocumented flag in ClamAV Documentation.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_SWF">
+	<summary>
+ Enables scanning within SWF files, notably compressed SWF.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamScanOptions.CL_SCAN_STDOPT">
+	<summary>
+ Standard scan option recormended by ClamAV Team.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:ReSharpedClam.ClamScanOptions">
+	<summary>
+ ClamAV engine scan options.
+ </summary>
+	<remarks>Use <see cref="F:ReSharpedClam.ClamScanOptions.CL_SCAN_STDOPT"/> if you not sure.</remarks>
+</member><member name="P:ReSharpedClam.ClamScanResult.FileSize">
+	<summary>
+ Scanned file size, in bytes.
+ </summary>
+	<returns>Original file size, in bytes.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.ClamScanResult.FullPath">
+	<summary>
+ Full path to scanned file.
+ </summary>
+	<returns>Full path to scanned file.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.ClamScanResult.IsInfected">
+	<summary>
+ Is the file infected?
+ </summary>
+	<returns><c>Boolean</c> value indicating if the file is a malware.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.ClamScanResult.ScannedData">
+	<summary>
+ Total scanned data.
+ </summary>
+	<returns>Total scanned data by ClamAV Engine.</returns>
+	<remarks>This number is calculated using CL_COUNT_PERCISION.</remarks>
+</member><member name="P:ReSharpedClam.ClamScanResult.VirusName">
+	<summary>
+ Virus name, if infected.
+ </summary>
+	<returns>Virus name.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.ClamScanResult.TimeElapsed">
+	<summary>
+ Time elapsed to scan this file.
+ </summary>
+	<returns>Time elapsed to scan this file.</returns>
+	<remarks>Only to scan this file. Not including database loading, compiling and another process time.</remarks>
+</member><member name="T:ReSharpedClam.ClamScanResult">
+	<summary>
+ File scan result.
+ </summary>
+	<remarks>ClamAV scan result.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_init(System.UInt32)">
+	<summary>
+ Initialize ClamAV.
+ </summary>
+	<param name="initoptions">Optional initialization opetion.</param>
+	<returns>Error code (if an error occured).</returns>
+	<remarks>Just call this once.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_retver">
+	<summary>
+ Gets ClamAV version.
+ </summary>
+	<returns>Handle to ClamAV version string.</returns>
+	<remarks>The return value is handle. Use <c>Marshal.PtrToStringAnsi</c> to read String from this handle.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_strerror(System.Int32)">
+	<summary>
+ Gets error message from error code.
+ </summary>
+	<param name="clerror">Error code.</param>
+	<returns>Error message from specified error code.</returns>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_new">
+	<summary>
+ Create new engine.
+ </summary>
+	<returns>Handle to new ClamAV Engine.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_free(System.IntPtr)">
+	<summary>
+ Free ClamAV Engine (engine created using <see cref="M:ReSharpedClam.ClamPInvokes.cl_engine_new">cl_engine_new</see>).
+ </summary>
+	<param name="engine">ClamAV Engine handle.</param>
+	<returns>Please refer to ClamAV Documentation.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_scanfile(System.String,System.IntPtr@,System.UInt32@,System.IntPtr,System.UInt32)">
+	<summary>
+ Scans a file.
+ </summary>
+	<param name="filename">Full path to file.</param>
+	<param name="virname">Virus name (if infected).</param>
+	<param name="scanned">Total scanned data (use <c>CL_COUNT_PRECISION</c> to calculate the size).</param>
+	<param name="engine">ClamAV Engine to scan the file.</param>
+	<param name="scanoptions">Scan options.</param>
+	<returns>Please refer to ClamAV Documentation.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_scandesc(System.Int32,System.IntPtr@,System.UInt32@,System.IntPtr,System.UInt32)">
+	<summary>
+ Scans a file using it's File Descriptor.
+ </summary>
+	<param name="desc">The File Descriptor.</param>
+	<param name="virname">Virus name (if infected).</param>
+	<param name="scanned">Total scanned data (use <c>CL_COUNT_PRECISION</c> to calculate the size).</param>
+	<param name="engine">ClamAV Engine to scan the file.</param>
+	<param name="scanoptions">Scan options.</param>
+	<returns>Please refer to ClamAV Documentation.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_compile(System.IntPtr)">
+	<summary>
+ Compiles ClamAV engine.
+ </summary>
+	<param name="engine">Handle to ClamAV engine.</param>
+	<returns>Please refer to ClamAV Documentation.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_load(System.IntPtr,System.IntPtr,System.UInt32@,System.UInt32)">
+	<summary>
+ Loads ClamAV Database (CVD) to ClamAV Engine.
+ </summary>
+	<param name="path">Full path to file or folder contains CVD File.</param>
+	<param name="engine">ClamAV Engine handle.</param>
+	<param name="signo">Number of loaded signatures.</param>
+	<param name="dboptions">Database loading options.</param>
+	<returns>Please refer to ClamAV Documentation.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_set_num(System.IntPtr@,ReSharpedClam.ClamEngineField,System.Int32)">
+	<summary>
+ Sets setting in ClamAV Engine (NUMERICAL FIELD ONLY).
+ </summary>
+	<param name="engine">ClamAV Engine handle.</param>
+	<param name="field">ClamAV Engine field.</param>
+	<param name="num">Your setting value.</param>
+	<returns>Please refer to ClamAV Documentation.</returns>
+	<remarks>Please refer to ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_get_num(System.IntPtr@,ReSharpedClam.ClamEngineField,System.Int32@)">
+	<summary>
+ Gets engine numerical setting field value.
+ </summary>
+	<param name="engine">ClamAV Engine handle.</param>
+	<param name="field">ClamAV Engine field.</param>
+	<param name="err">Error code (if an error occured).</param>
+	<returns>Engine setting field value.</returns>
+	<remarks>NUMERICAL FIELD ONLY!</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_set_str(System.IntPtr@,ReSharpedClam.ClamEngineField,System.String)">
+	<summary>
+ Sets engine setting field value.
+ </summary>
+	<param name="engine">ClamAV Engine handle.</param>
+	<param name="field">ClamAV Engine field.</param>
+	<param name="str">Setting field value.</param>
+	<returns>Error code (if an error occured).</returns>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_engine_get_str(System.IntPtr@,ReSharpedClam.ClamEngineField,System.Int32@)">
+	<summary>
+ Gets engine setting field value.
+ </summary>
+	<param name="engine">ClamAV Engine handle.</param>
+	<param name="field">ClamAV Engine field.</param>
+	<param name="err">Error code (if an error occured).</param>
+	<returns>Engine setting field value.</returns>
+	<remarks></remarks>
+</member><member name="T:ReSharpedClam.ClamPInvokes.cl_cvd">
+	<summary>
+ ClamAV cl_cvd structure.
+ </summary>
+	<remarks>For more information about this structure, see ClamAV Documentation.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_countsigs(System.String,System.UInt32,System.UInt32@)">
+	<summary>
+ Count number of signatures.
+ </summary>
+	<param name="path">Full path to database directory.</param>
+	<param name="countoptions">Count options.</param>
+	<param name="sigs">Number of loaded signatures.</param>
+	<returns>Error code (if an error occured).</returns>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_cvdhead(System.String)">
+	<summary>
+ Gets ClamAV database header.
+ </summary>
+	<param name="file">Full path to ClamAV database.</param>
+	<returns>Handle to cl_cvd structure.</returns>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_cvdverify(System.String)">
+	<summary>
+ Verify database file header.
+ </summary>
+	<param name="file">Full path to ClamAV database.</param>
+	<returns>Error code (if an error occured).</returns>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_retdbdir">
+	<summary>
+ Gets database path.
+ </summary>
+	<returns>Database path.</returns>
+	<remarks>This function also return a handle. Use <c>Marshal.PtrToStringAnsi</c> to get <c>String</c> version.</remarks>
+</member><member name="M:ReSharpedClam.ClamPInvokes.cl_cvdfree(System.IntPtr@)">
+	<summary>
+ Free handle created by <see cref="M:ReSharpedClam.ClamPInvokes.cl_cvdhead(System.String)"/>.
+ </summary>
+	<param name="cvd">Handle to cl_cvd structure.</param>
+	<remarks></remarks>
+</member><member name="T:ReSharpedClam.ClamPInvokes">
+	<summary>
+ P/Invoke to ClamAV Library.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_PHISHING">
+	<summary>
+ Load phishing signatures.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_PHISHING_URLS">
+	<summary>
+ Initialize the phishing detection module and load .wdb and .pdb files.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_PUA">
+	<summary>
+ Load signatures for Potentially Unwanted Applications.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_OFFICIAL_ONLY">
+	<summary>
+ Only load official signatures from digitally signed databases.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_BYTECODE">
+	<summary>
+ Load bytecode.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_STDOPT">
+	<summary>
+ This is an alias for a recommended set of scan options.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:ReSharpedClam.ClamDatabaseOptions">
+	<summary>
+ ClamAV database loading options.
+ </summary>
+	<remarks>Use <see cref="F:ReSharpedClam.ClamDatabaseOptions.CL_DB_STDOPT"/> if you not sure.</remarks>
+</member><member name="M:ReSharpedClam.ClamFileSize.ToMbytes">
+	<summary>Convert current size to MBytes.</summary>
+	<returns>Calculated using SIZE * (CL_COUNT_PRECISION / 1024) / 1024 equation.</returns>
+</member><member name="M:ReSharpedClam.ClamFileSize.ToKbytes">
+	<summary>Convert current size to KBytes.</summary>
+	<returns>Calculated using SIZE * (CL_COUNT_PRECISION / 1024) equation.</returns>
+</member><member name="M:ReSharpedClam.ClamFileSize.ToBytes">
+	<summary>Returns current scanned data size.</summary>
+	<returns>Returns original scanned size.</returns>
+</member><member name="T:ReSharpedClam.ClamFileSize">
+	<summary>
+ Size of scanned data, calculated by CL_COUNT_PRECISION.
+ </summary>
+	<remarks>File size measurement using ClamAV calculating rule using <see cref="F:ReSharpedClam.ClamConstants.CL_COUNT_PRECISION"/>.</remarks>
+</member><member name="F:ReSharpedClam.ClamConstants.libclamav_Path">
+	<summary>
+ Change this constant value according to your libclamav.dll location.
+ </summary>
+	<remarks>The path can be Relative or Absolute.</remarks>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_SUCCESS">
+	<summary>ClamAV default return value.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_COUNTSIGS_OFFICIAL">
+	<summary>Count official signatures only.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_COUNTSIGS_UNOFFICIAL">
+	<summary>Count unofficial signatures only.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_COUNTSIGS_ALL">
+	<summary>Count both official and unofficial signatures.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_INIT_DEFAULT">
+	<summary>Default ClamAV initialization parameter.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_CLEAN">
+	<summary>Indicates the file is clean.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_VIRUS">
+	<summary>Indicates the file is malware.</summary>
+</member><member name="F:ReSharpedClam.ClamConstants.CL_COUNT_PRECISION">
+	<summary>ClamAV default count precision.</summary>
+</member><member name="T:ReSharpedClam.ClamConstants">
+	<summary>
+ Provides constants from ClamAV libraries.
+ </summary>
+	<remarks>Please edit this class before using this library wrapper.</remarks>
+</member><member name="T:ReSharpedClam.ClamEngineField">
+	<summary>
+ ClamAV engine field.
+ </summary>
+	<remarks>Please read ClamAV's documentation for more information.</remarks>
+</member><member name="T:ReSharpedClam.ClamException">
+	<summary>
+ Represents errors that occur during ClamAV execution.
+ </summary>
+	<remarks>This exception is usually thrown from ClamAV library.</remarks>
+</member><member name="M:ReSharpedClam.Freshclam.GetDatabaseDirectory">
+	<summary>
+ Gets database directory.
+ </summary>
+	<returns>Full path to database path.</returns>
+	<remarks>Hardcoded.</remarks>
+</member><member name="M:ReSharpedClam.Freshclam.VerifyDatabase(System.String)">
+	<summary>
+ Check database (CVD) file header.
+ </summary>
+	<param name="cvdPath">Full path to CVD file.</param>
+	<returns><c>True</c> if database header is valid, otherwise <c>False</c>.</returns>
+	<remarks>This method check CVD file header.</remarks>
+</member><member name="M:ReSharpedClam.Freshclam.CountSignatures(System.String,ReSharpedClam.ClamSignaturesOption)">
+	<summary>
+ Count signature in database.
+ </summary>
+	<param name="countOption">Database to count.</param>
+	<param name="dbPath">Full path to database directory.</param>
+	<returns>Number of loaded sigantures.</returns>
+	<remarks>The directory! Not the file.</remarks>
+</member><member name="M:ReSharpedClam.Freshclam.IsNewUpdateAvailable(System.String)">
+	<summary>
+ Check for new update.
+ </summary>
+	<param name="cvdPath">Full path to CVD file.</param>
+	<returns><c>Boolean</c> value indicating if new version is available.</returns>
+	<remarks>This method does not update the database!</remarks>
+</member><member name="T:ReSharpedClam.Freshclam">
+	<summary>
+ Keep your ClamAV database up-to-date.
+ </summary>
+	<remarks>This class in only to check for updates purpose.</remarks>
+</member><member name="T:ReSharpedClam.ClamSignaturesOption">
+	<summary>
+ ClamAV signature count option.
+ </summary>
+	<remarks>Please read ClamAV's documentation for more information.</remarks>
+</member><member name="F:ReSharpedClam.ClamEngine.engineHandle">
+	<summary>ClamAV Engine handle.</summary>
+</member><member name="P:ReSharpedClam.ClamEngine.IsDatabaseLoaded">
+	<summary>
+ Check if database is loaded to engine.
+ </summary>
+	<returns><c>Boolean</c> value indicating if database is loaded.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.ClamEngine.IsEngineCompiled">
+	<summary>
+ Check if engine is compiled.
+ </summary>
+	<returns><c>Boolean</c> value indicating if engine is compiled.</returns>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.ScanByFile(System.String)">
+	<summary>
+ Scans a file.
+ </summary>
+	<param name="filePath">Full path to file.</param>
+	<returns><see cref="T:ReSharpedClam.IScanResult"/> object contains scan result informations.</returns>
+	<remarks>The engine must be loaded and compiled before using this method.</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.ScanByFile(System.String,ReSharpedClam.ClamScanOptions)">
+	<summary>
+ Scans a file with specified scan options.
+ </summary>
+	<param name="filePath">Full path to file.</param>
+	<param name="scanOptions">Scan option.</param>
+	<returns>See this section in <see cref="M:ReSharpedClam.ClamEngine.ScanByFile(System.String)"/> overloads.</returns>
+	<remarks>See this section in <see cref="M:ReSharpedClam.ClamEngine.ScanByFile(System.String)"/> overloads.</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.ScanByDescriptor(System.Int32)">
+	<summary>
+ Scans file using it's file descriptor.
+ </summary>
+	<param name="fileDescriptor">The file descriptor from open or ws_open.</param>
+	<returns><see cref="T:ReSharpedClam.IScanResult"/> object contains scan result informations.</returns>
+	<remarks>
+		<para>THIS METHOD ONLY WORKING WHEN USED WITH C/C++ CODE. 
+ You must create a C/C++ library to open file descriptor using C/C++ 
+ code because File Descriptor is officialy supported by C/C++ Runtime, 
+ not by CLR.</para>
+		<para>I'm currently working to create Unamanaged Library using C++ 
+ to open file and get it's file descriptor.</para>
+		<para>Remember, you can't use ANY .NET Framework internal method to open file descriptor, 
+ YOU MUST CREATE YOUR OWN LIBRARY USING C/C++ TO OPEN FILE DESCRIPTOR. 
+ .NET Framework FileSystem method like <c>FileOpen</c> will not work.</para>
+	</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.ScanByDescriptor(System.Int32,ReSharpedClam.ClamScanOptions)">
+	<summary>
+ Scans file using it's file descriptor with specified scan options.
+ </summary>
+	<param name="fileDescriptor">The file descriptor from open or ws_open.</param>
+	<param name="scanOptions">Scan option.</param>
+	<returns>See this section in <see cref="M:ReSharpedClam.ClamEngine.ScanByDescriptor(System.Int32)"/> overloads.</returns>
+	<remarks>See this section in <see cref="M:ReSharpedClam.ClamEngine.ScanByDescriptor(System.Int32)"/> overloads.</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.LoadDatabase(System.String)">
+	<summary>
+ Load database file(s) (CVD) to this engine.
+ </summary>
+	<param name="dbPath">Full path to CVD file or directory.</param>
+	<returns>Number of loaded sigantures.</returns>
+	<remarks>You can't load database after the engine had compiled.</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.LoadDatabase(System.String,ReSharpedClam.ClamDatabaseOptions)">
+	<summary>
+ Load database file(s) (CVDs) to this engine.
+ </summary>
+	<param name="dbPath">Full path to CVD file or directory.</param>
+	<param name="dbOptions">Database loading options.</param>
+	<returns>See this section in <see cref="M:ReSharpedClam.ClamEngine.LoadDatabase(System.String)"/> overloads.</returns>
+	<remarks>See this section in <see cref="M:ReSharpedClam.ClamEngine.LoadDatabase(System.String)"/> overloads.</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.CompileEngine">
+	<summary>
+ Compile engine for scanning purpose.
+ </summary>
+	<remarks>After the engine is compiled, you can't change anything else (e.g. change settings, load database).</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.SetEngineField(ReSharpedClam.ClamEngineField,System.Object)">
+	<summary>
+ Sets an engine field value.
+ </summary>
+	<param name="field">Engine field.</param>
+	<param name="value">New value to apply.</param>
+	<remarks>Call this before compiling the engine. BE CAREFUL WHEN CALLING THIS METHOD. PLEASE REFER TO CLAMAV DOCUMENTATION FOR MORE INFORMATION.</remarks>
+</member><member name="M:ReSharpedClam.ClamEngine.GetEngineField(ReSharpedClam.ClamEngineField)">
+	<summary>
+ Gets an engine field value.
+ </summary>
+	<param name="field">Engine field.</param>
+	<returns></returns>
+	<remarks>Call this before compiling the engine. BE CAREFUL WHEN CALLING THIS METHOD. PLEASE REFER TO CLAMAV DOCUMENTATION FOR MORE INFORMATION.</remarks>
+</member><member name="T:ReSharpedClam.ClamEngine">
+	<summary>
+ Manged ClamAV scanning engine.
+ </summary>
+	<remarks>ClamAV main scanning engine. You can create one or more engine at same time, but you might consider memory consumption.</remarks>
+</member><member name="M:ReSharpedClam.ClamMain.InitializeClamAV(System.UInt32)">
+	<summary>
+ Initialize ClamAV library (Libclamav).
+ </summary>
+	<param name="cl_init_option">Initialization option.</param>
+	<remarks>Only call this once.</remarks>
+</member><member name="M:ReSharpedClam.ClamMain.GetVersion">
+	<summary>
+ Get ClamAV version.
+ </summary>
+	<returns>ClamAV version.</returns>
+	<remarks>Might this value is hardcoded by ClamAV library.</remarks>
+</member><member name="T:ReSharpedClam.ClamMain">
+	<summary>
+ Managed ClamAV bindings in .NET Framework.
+ </summary>
+	<remarks>This class only contains Shared methods.</remarks>
+</member><member name="P:ReSharpedClam.IScanResult.VirusName">
+	<summary>
+ Virus name, if infected.
+ </summary>
+	<returns>Virus name.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.IScanResult.IsInfected">
+	<summary>
+ Is the file infected?
+ </summary>
+	<returns><c>Boolean</c> value indicating if the file is a malware.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.IScanResult.TimeElapsed">
+	<summary>
+ Time elapsed to scan this file.
+ </summary>
+	<returns>Time elapsed to scan this file.</returns>
+	<remarks>Only to scan this file. Not including database loading, compiling and another process time.</remarks>
+</member><member name="P:ReSharpedClam.IScanResult.ScannedData">
+	<summary>
+ Total scanned data.
+ </summary>
+	<returns>Total scanned data by ClamAV Engine.</returns>
+	<remarks>This number is calculated using CL_COUNT_PERCISION.</remarks>
+</member><member name="P:ReSharpedClam.IScanResult.FullPath">
+	<summary>
+ Full path to scanned file.
+ </summary>
+	<returns>Full path to scanned file.</returns>
+	<remarks></remarks>
+</member><member name="P:ReSharpedClam.IScanResult.FileSize">
+	<summary>
+ Scanned file size, in bytes.
+ </summary>
+	<returns>Original file size, in bytes.</returns>
+	<remarks></remarks>
+</member><member name="T:ReSharpedClam.IScanResult">
+	<summary>
+ Standard scan result informations.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ReSharpedClam.modExtensions.SuccessOrThrow(System.Int32)">
+	<summary>
+ Check if return code is an error and throws it.
+ </summary>
+	<param name="code">Return value from ClamAV.</param>
+	<remarks>Error message gathered from ClamAV.</remarks>
+</member>
+</members>
+</doc>

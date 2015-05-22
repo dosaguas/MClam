@@ -1,0 +1,6 @@
+S:\Visual Studio 2010\Projects\ReSharpedClam\ReSharpedClam\bin\Debug\ReSharpedClam.dll
+S:\Visual Studio 2010\Projects\ReSharpedClam\ReSharpedClam\bin\Debug\ReSharpedClam.pdb
+S:\Visual Studio 2010\Projects\ReSharpedClam\ReSharpedClam\bin\Debug\ReSharpedClam.xml
+S:\Visual Studio 2010\Projects\ReSharpedClam\ReSharpedClam\obj\Debug\ReSharpedClam.dll
+S:\Visual Studio 2010\Projects\ReSharpedClam\ReSharpedClam\obj\Debug\ReSharpedClam.xml
+S:\Visual Studio 2010\Projects\ReSharpedClam\ReSharpedClam\obj\Debug\ReSharpedClam.pdb

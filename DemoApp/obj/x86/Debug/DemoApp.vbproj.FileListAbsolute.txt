@@ -1,0 +1,13 @@
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\bin\Debug\DemoApp.exe
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\bin\Debug\DemoApp.pdb
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\bin\Debug\DemoApp.xml
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\bin\Debug\ReSharpedClam.dll
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\bin\Debug\ReSharpedClam.pdb
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\bin\Debug\ReSharpedClam.xml
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.vbprojResolveAssemblyReference.cache
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.Resources.resources
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.vbproj.GenerateResource.Cache
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.exe
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.xml
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.pdb
+S:\Visual Studio 2010\Projects\ReSharpedClam\DemoApp\obj\x86\Debug\DemoApp.frmMain.resources
