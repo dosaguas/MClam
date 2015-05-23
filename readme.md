@@ -92,7 +92,7 @@ Imports ReSharpedClam
 ## 4) ISSUE
 THE MOST ANNOYING ISSUE : Unicode path name is not supported.
 
-But, I have find out how to resolve this. Just open file descriptor using `_wopen`, but it is a C++ code. Now I'm learning C++ to create library to handle this.
+But, I had find out how to resolve this. Just open file descriptor using `_wopen` and scan it using `ScanByDescriptor`, but `_wopen` is a C++ code. Now I'm learning C++ to create library to handle this.
 
 Might you guys can help me find out how to create this library.
    
