@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which assemblies to include from solution and
+				 project documentation sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c681fbe8-7447-47f3-a571-3b49c79c245c</ProjectGuid>
+    <SHFBSchemaVersion>1.9.9.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
+    <AssemblyName>MClamDoc</AssemblyName>
+    <RootNamespace>MClamDoc</RootNamespace>
+    <Name>MClamDoc</Name>
+    <!-- SHFB properties -->
+    <FrameworkVersion>.NET Framework 2.0</FrameworkVersion>
+    <OutputPath>.\Help\</OutputPath>
+    <HtmlHelpName>MClamDoc</HtmlHelpName>
+    <Language>en-US</Language>
+    <TransformComponentArguments>
+      <Argument Key="logoFile" Value="MClamLogo.png" />
+      <Argument Key="logoHeight" Value="48" />
+      <Argument Key="logoWidth" Value="48" />
+      <Argument Key="logoAltText" Value="MClam logo" />
+      <Argument Key="logoPlacement" Value="left" />
+      <Argument Key="logoAlignment" Value="left" />
+      <Argument Key="maxVersionParts" Value="" />
+      <Argument Key="defaultLanguage" Value="cs" />
+    </TransformComponentArguments>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
+    <IndentHtml>False</IndentHtml>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <CppCommentsFixup>False</CppCommentsFixup>
+    <CleanIntermediates>True</CleanIntermediates>
+    <MaximumGroupParts>2</MaximumGroupParts>
+    <NamespaceGrouping>False</NamespaceGrouping>
+    <SyntaxFilters>C#, Visual Basic</SyntaxFilters>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <Preliminary>False</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <HelpTitle>MClam Documentation</HelpTitle>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\MClam\MClam.csproj" xmlns="" />
+    </DocumentationSources>
+    <FeedbackEMailAddress>fahminlb33%40gmail.com</FeedbackEMailAddress>
+    <CopyrightText>Copyright %28C%29 Fahmi Noor Fiqri 2016 - LGPL v3</CopyrightText>
+    <CopyrightHref>http://www.gnu.org/licenses/lgpl-3.0.en.html</CopyrightHref>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="MClam" isDocumented="True" xmlns="">Root namespace of MClam.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="MClam.Database" isDocumented="True" xmlns="">Database (CVD) related functions.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="MClam.Engine" isDocumented="True" xmlns="">Antivirus engine function related.</NamespaceSummaryItem>
+    </NamespaceSummaries>
+    <FooterText>
+    </FooterText>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
+			 the build.  The others are optional common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Content" />
+    <Folder Include="Content\Cheatsheet" />
+    <Folder Include="Content\Cheatsheet\HowTos" />
+    <Folder Include="Content\Cheatsheet\HowTos\main" />
+    <Folder Include="Content\Cheatsheet\HowTos\engine" />
+    <Folder Include="Content\Cheatsheet\HowTos\database" />
+    <Folder Include="Content\Cheatsheet\Walkthroughs" />
+    <Folder Include="icons" />
+    <Folder Include="Media" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Cheatsheet.aml" />
+    <None Include="Content\Cheatsheet\HowTos\database\db-howto1.aml" />
+    <None Include="Content\Cheatsheet\HowTos\engine\cl-howto1.aml" />
+    <None Include="Content\Cheatsheet\HowTos\engine\cl-howto2.aml" />
+    <None Include="Content\Cheatsheet\HowTos\HowTosMain.aml" />
+    <None Include="Content\Cheatsheet\HowTos\main\mn-howto1.aml" />
+    <None Include="Content\Cheatsheet\Walkthroughs\walk1.aml" />
+    <None Include="Content\Cheatsheet\Walkthroughs\walk2.aml" />
+    <None Include="Content\Cheatsheet\Walkthroughs\WalkthroughsMain.aml" />
+    <None Include="Content\License.aml" />
+    <None Include="Content\Welcome.aml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentLayout Include="ContentLayout.content" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons\MClamLogo.png">
+      <ImageId>MClamLogo</ImageId>
+      <AlternateText>MClam Logo</AlternateText>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Media\lgplv3.png">
+      <ImageId>lgplv3</ImageId>
+      <AlternateText>lgplv 3</AlternateText>
+    </Image>
+  </ItemGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

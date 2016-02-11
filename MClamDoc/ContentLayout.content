@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="0fe3148e-e3ae-4aec-bfb0-ac36ffb9e2f7" visible="True" isDefault="true" title="Welcome">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="1ef5db2f-5d83-49cb-b494-fa881e3a9d73" visible="True" isExpanded="true" title="Cheatsheet">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="sample, example, cheat" />
+    </HelpKeywords>
+    <Topic id="23bd042c-7ce6-4118-bc9c-fbe7b583bdaa" visible="True" isExpanded="true" title="HowTo">
+      <Topic id="76e2dd86-5ceb-4ca6-9b4f-c946b862dbac" visible="True" title="HowTo: Initialize ClamAV engine" />
+      <Topic id="f61863ff-7845-4a90-a575-c81576f756e0" visible="True" title="HowTo: Scan a file" />
+      <Topic id="1b55f984-fb6b-4fc5-ba22-99a3ab2a5e92" visible="True" title="HowTo: Check for CVD update" />
+    </Topic>
+    <Topic id="c94ae9b0-7888-4de9-9625-5384468ac601" visible="True" isExpanded="true" title="Walkthroughs">
+      <Topic id="8abe2a9b-b182-4720-8cd8-d69accd9a834" visible="True" title="The ClamException and other Exceptions" />
+      <Topic id="59a98f53-06cb-4d60-820d-2a9fd4ec7abc" visible="True" title="Working with Unicode path names" />
+    </Topic>
+  </Topic>
+  <Topic id="856808a0-4872-48f9-bd83-3c0d49d0a4f8" visible="True" isSelected="true" title="License" />
+</Topics>

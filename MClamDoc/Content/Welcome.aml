@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="0fe3148e-e3ae-4aec-bfb0-ac36ffb9e2f7" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+      <autoOutline />
+      <para>This file contains full documentation to help you using MClam library.</para>
+		</introduction>
+
+    <section address="IntroductionSect">
+      <title>Introduction</title>
+      <content>
+        <autoOutline />
+        <para>
+          <legacyBold>MClam</legacyBold> is a lightweight, full featured and open source <application>libclamav</application>
+wrapper written in <application>C#</application> with <application>.NET Framework 2.0</application>. It has many features to support virus detection and database updates.</para>
+        <para>This library offers many functions, such as :</para>
+        <list class="bullet">
+          <listItem>
+            <para>Very lightwight and can be used widely in many <application>.NET Framework</application> applications.</para>
+          </listItem>
+          <listItem>
+            <para>File scanning with Unicode path name support.</para>
+          </listItem>
+          <listItem>
+            <para>Database update checks and CVD verification.</para>
+          </listItem>
+          <listItem>
+            <para>Most libclamav API are implemented with many sample code.</para>
+          </listItem>
+          <listItem>
+            <para>Well implemeted <codeEntityReference>IDisposable</codeEntityReference> interface to avoid memory leaking.</para>
+          </listItem>
+          <listItem>
+            <para>Safe against <system>Handle Recycling Attack.</system>
+          </para>
+          </listItem>
+          <listItem>
+            <para>High <legacyBold>Maintainability Index</legacyBold> score, which means this library is well coded :)
+          </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+		<section address="GettingStartedSect">
+			<title>Getting Started</title>
+			<content>
+        <autoOutline />
+				<para>To get started, add reference to MClam library, install <legacyBold>Microsoft Visual C++ 2010 Runtime</legacyBold>
+and read the <link xlink:href="1ef5db2f-5d83-49cb-b494-fa881e3a9d73">Cheatsheet.</link>
+      </para>
+
+				<list class="bullet">
+					<listItem>
+						<para>
+              <legacyItalic>Add reference to MClam library.</legacyItalic> This first step is the most important!
+            </para>
+					</listItem>
+
+					<listItem>
+						<para>The <legacyBold>Microsoft Visual C++ 2010 Runtime</legacyBold> is required because ClamAV itself
+requries MSVC++ 2010 as it's runtime. And, MSVC++ 2010 also gives MClam library ability to work with Unicode path names.
+Thanks to <codeInline>_wopen</codeInline> and <codeInline>_close</codeInline> API MSVC++ 2010!</para>
+					</listItem>
+
+					<listItem>
+						<para>The <legacyItalic>Cheatsheet</legacyItalic> has many HowTos and Walkthroughs to use MClam.
+            </para>
+					</listItem>
+				</list>
+
+				<para>When you successfully do all the stuff in <legacyItalic>Cheatsheet</legacyItalic>, you will need to read the
+whole reference details to use the full power of MClam.</para>
+			</content>
+		</section>
+
+    <section address="LicenseSect">
+      <title>License</title>
+      <content>
+        <autoOutline />
+        <mediaLink>
+          <caption placement="after" lead="">This library is licensed under GNU LESSER GENERAL PUBLIC LICENSE Version 3, 29 June 2007</caption>
+          <image xlink:href="lgplv3" placement="center"/>
+        </mediaLink>
+        <para>For more information about license, see <link xlink:href="856808a0-4872-48f9-bd83-3c0d49d0a4f8">License</link> topic.</para>
+      </content>
+    </section>
+    
+		<relatedTopics>
+			<link xlink:href="1ef5db2f-5d83-49cb-b494-fa881e3a9d73" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

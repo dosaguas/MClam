@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="f61863ff-7845-4a90-a575-c81576f756e0" revisionNumber="1">
+  <developerHowToDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <introduction>
+      <para>This topic describe how to scan a file using <codeInline>MClam</codeInline> library.
+    </para>
+    </introduction>
+
+    <procedure>
+      <title>Scan a file</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Create new <legacyBold>Console App</legacyBold> named <legacyBold>MScanTest</legacyBold>.</para>
+          </content>
+        </step>
+
+        <step>
+          <content>
+            <para>Add reference to <legacyBold>MClam</legacyBold> library.
+          </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Declare these imports.</para>
+            <code language="csharp">
+              using System;
+              using System.Collections.Generic;
+              using System.Text;
+              using MClam;
+              using MClam.Database;
+              using MClam.Engine;
+            </code>
+          </content>
+        </step>
+
+        <step>
+          <content>
+            <para>Copy these code into your <legacyBold>Main</legacyBold> method.</para>
+            <code language="csharp">
+              static void Main(string[] args)
+              {
+                //Always wrap anything that could possibly throw an exception.
+                try
+                {
+                  Console.WriteLine("MClam scan file example.");
+                  Console.WriteLine("========================");
+                  Console.WriteLine();
+                  
+                  //Initialize ClamAV engine.
+                  Helpers.InitializeClamAV();
+
+                  //Use "using" to avoid memory leak when exception is thrown.
+                  Console.Write("Creating new engine...");
+                  using (var cl_engine = ClamEngine.CreateNew())
+                  {
+                    Console.WriteLine("SUCCESS!");
+
+                    //Load database files from directory.
+                    Console.Write("Loading CVD into engine...");
+                    cl_engine.LoadCvdDirectory(@"D:\MClam\CVD");
+                    Console.WriteLine("SUCCESS!");
+
+                    //Compile engine.
+                    Console.Write("Compiling engine...");
+                    cl_engine.Compile();
+                    Console.WriteLine("SUCCESS!");
+
+                    //Open a file to scan.
+                    Console.Write("Opening a file...");
+                    var fileToScan = FileEntry.Open(@"D:\MClam\eicar.com");
+                    Console.WriteLine("SUCCESS!");
+
+                    //Scan the file.
+                    Console.Write("Scanning file...");
+                    var result = cl_engine.ScanFile(fileToScan);
+                    Console.WriteLine("COMPLETED!");
+                    Console.WriteLine();
+
+                    //Show file scan info.
+                    Console.Write("FullPath: ");
+                    Console.WriteLine(result.FullPath);
+                    Console.Write("IsVirus: ");
+                    Console.WriteLine(result.IsVirus);
+                    Console.Write("Scanned: ");
+                    Console.WriteLine(result.Scanned);
+                    Console.Write("VirusName: ");
+                    Console.WriteLine(result.VirusName);
+                    Console.WriteLine();
+
+                    //Completed!
+                    Console.WriteLine("Scan has been completed!");
+                  }
+                }
+                catch (Exception ex)
+                  {
+                  //We've got an exception. Write it on screen.
+                  Console.WriteLine(ex.ToString());
+                }
+                //Pause here...
+                Console.Write("Press any key to exit...");
+                Console.ReadKey();
+              }
+            </code>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <buildInstructions>
+      <content>
+        <table>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>Title</para>
+              </entry>
+              <entry>
+                <para>Description</para>
+              </entry>
+            </row>
+          </tableHeader>
+          
+          <row>
+            <entry>
+              <para>Database directory</para>
+            </entry>
+            <entry>
+              <para>Directory that contains CVD files. In this case it's located on <legacyItalic>D:\MClam\CVD.</legacyItalic>
+            </para>
+            </entry>
+          </row>
+
+          <row>
+            <entry>
+              <para>File to scan</para>
+            </entry>
+            <entry>
+              <para>
+                File to scan. In this case it's located on <legacyItalic>D:\MClam\eicar.com</legacyItalic>
+              </para>
+            </entry>
+          </row>
+        </table>
+        <para>After all requirement above is fullfilled, you can Debug you app and see how <legacyBold>MClam</legacyBold> scan the file.
+      </para>
+      </content>
+    </buildInstructions>
+    
+    <robustProgramming>
+      <content>
+        <para>To achieve best performance using <codeInline>MClam</codeInline>, take care about memory handling and exceptions
+seriously. Always use <legacyBold>using</legacyBold> and <legacyBold>try</legacyBold> statement to avoid memory leaking. Above code is the recomended code for production. Know the pattern you're using and always check the
+<link xlink:href="1ef5db2f-5d83-49cb-b494-fa881e3a9d73">Cheatsheet</link> if you forgot something.
+      </para>
+      </content>
+    </robustProgramming>
+
+    <relatedTopics>
+    </relatedTopics>
+  </developerHowToDocument>
+</topic>

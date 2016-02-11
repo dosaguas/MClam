@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="23bd042c-7ce6-4118-bc9c-fbe7b583bdaa" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+     <autoOutline />
+      <para>This topic list some article with steps how to use <codeInline>MClam</codeInline> library.
+    </para>
+    </introduction>
+
+    <section address="SectMain">
+      <title>Main usage</title>
+      <content>
+        <autoOutline />
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="76e2dd86-5ceb-4ca6-9b4f-c946b862dbac">HowTo: Initialize ClamAV engine.</link>
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="SectDatabase">
+      <title>Database usage</title>
+      <content>
+        <autoOutline />
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="1b55f984-fb6b-4fc5-ba22-99a3ab2a5e92">HowTo: Check for CVD update.</link>
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="SectEngine">
+      <title>Engine usage</title>
+      <content>
+        <autoOutline />
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="f61863ff-7845-4a90-a575-c81576f756e0">HowTo: Scan a file.</link>
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    
+    <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

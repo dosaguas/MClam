@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="8abe2a9b-b182-4720-8cd8-d69accd9a834" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <autoOutline />
+      <para>Explains how exceptions take place in MClam.</para>
+    </introduction>
+
+    <section address="Sect1">
+      <title>The ClamException</title>
+      <content>
+        <autoOutline />
+        <para>This is the <legacyItalic>main</legacyItalic> exception class to wrap all libclamav errors.
+How it's role in MClam?</para>
+
+        <para>This class (the <codeEntityReference qualifyHint="false">T:MClam.ClamException</codeEntityReference>) represent
+all error description from libclamav internals. This class converts the error code from all P/Invoke to libclamav to 
+human-readable errors.</para>
+
+        <para>When this exception is thrown from <codeEntityReference qualifyHint="false">T:MClam.Engine.ClamEngine</codeEntityReference>,
+the class that thrown the exception must be disposed. Because <codeInline>ClamEngine</codeInline> allocate few MB in memory,
+it must be freed when any kind of error code is returned (not <codeInline>CL_SUCCESS</codeInline> constant). Dispose method
+in <codeInline>ClamEngine</codeInline> calls the <codeInline>cl_engine_free</codeInline> method to free engine handle.
+<codeInline>cl_engine_free</codeInline> must be called before the <codeInline>ClamEngine</codeInline> instance GC'ed, if the
+<codeInline>ClamEngine</codeInline> instance has GC'ed, the allocated memory is still lives and can't be deallocated.
+Except with system shutdown or restart.</para>
+
+        <para>The <codeEntityReference qualifyHint="false">T:MClam.Helpers</codeEntityReference> class also can throw a 
+<codeInline>ClamException</codeInline>. But, because <codeInline>Helpers</codeInline> class is <legacyBold>static</legacyBold>, you can just ignore it.</para>
+
+        <para>So, take care to dispose <codeInline>ClamEngine</codeInline> instance everytime this exception thrown.
+The easiest approach is the use of <legacyBold>using</legacyBold> statement. With the <legacyBold>using</legacyBold> statement,
+when an exception is thrown, the class instance can be disposed.</para>
+      </content>
+    </section>
+
+    <section address="Sect2">
+      <title>Any other exceptions?</title>
+      <content>
+        <autoOutline />
+        <para>Any other exceptions like <codeEntityReference qualifyHint="false">T:System.InvalidOperationException</codeEntityReference>
+or <codeEntityReference qualifyHint="false">T:System.ArgumentNullException</codeEntityReference> and any other exceptions are
+<legacyBold>safe</legacyBold>. <legacyBold>Safe</legacyBold> in this case means you don't need to dispose the throwing class.</para>
+      </content>
+    </section>
+
+    <section address="Sect3">
+      <title>Conclusion</title>
+      <content>
+        <autoOutline />
+        <para>So, this sheet clarify that :</para>
+        <list class="bullet">
+          <listItem>
+            <para>It's safe to not dispose the calling class when the thrown exception is not <codeInline>ClamException</codeInline>.</para>
+          </listItem>
+          <listItem>
+            <para>You must dispose any classes that throws <codeInline>ClamException</codeInline> to avoid memory leaks.</para>
+          </listItem>
+          <listItem>
+            <para>Easiest way to avoid memory leaking is the <codeInline>using</codeInline> statement. It will dispose any instance
+that implements <codeInline>IDisposable</codeInline>, even if exception has thrown.</para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    
+    <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
